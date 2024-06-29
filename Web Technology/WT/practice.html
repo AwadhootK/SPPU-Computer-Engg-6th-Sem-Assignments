@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        th, td {
+            border: 1px solid black;
+            padding: 2px;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>List of Items</h1>
+    <ul id="unordered-list">
+      <li class="list-item">Item 1</li>
+      <li class="list-item">Item 2</li>
+      <li class="list-item">Item 3</li>
+      <li class="list-item">Item 4</li>
+    </ul>
+    <a href="http://www.google.com">Google</a>
+
+    <div id="hover" style="background-color: green">
+        <h1>Hover...</h1>
+    </div>
+
+    <table style="border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Branch</th>
+                <th>Roll No.</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Awadhoot</td>
+                <td>CE</td>
+                <td>31239</td>
+            </tr>
+            <tr>
+                <td>
+                    <s>
+                        <strong>
+                            <em>
+                                FEMALE
+                            </em>
+                        </strong>
+                    </s>
+                Soumya
+            </td>
+                <td>IT</td>
+                <td>31224</td>
+            </tr>
+        </tbody>
+    </table>
+  </body>
+  <script>
+    const parent = document.querySelector('#unordered-list')
+    console.log(parent.children.length)
+    console.log(parent.firstElementChild.textContent)
+    console.log(parent.lastElementChild.textContent)
+    console.log(parent.parentElement.textContent)
+    console.log(parent.lastElementChild.textContent)
+    console.log(parent.nextElementSibling.textContent)
+    console.log(parent.previousElementSibling.textContent)
+
+    parent.childNodes.forEach(e => console.log('Node: ' + e.textContent))
+
+    const editItem3 = document.querySelector('li:nth-child(3)')
+    // editItem3.innerText = 'Hello';
+
+    const newEditItem3 = document.createElement('li')
+    newEditItem3.innerText = 'Hello'
+    editItem3.replaceWith(newEditItem3)
+
+    newEditItem3.remove()
+
+    const myUL = document.querySelector('ul')
+    const newLi = document.createElement('li')
+    newLi.innerText = 'New Item'
+
+    myUL.appendChild(newLi)
+
+    // newLi.remove();
+
+    const hoverDiv = document.querySelector('#hover')
+    const h1 = document.querySelector('#hover h1');
+
+    hoverDiv.addEventListener('mouseover', function () {
+      hoverDiv.style.backgroundColor = 'green'
+      h1.innerText = 'ON'
+    })
+
+    hoverDiv.addEventListener('mouseout', function () {
+      hoverDiv.style.backgroundColor = 'red'
+      h1.innerText = 'OFF'
+    })
+  </script>
+</html>

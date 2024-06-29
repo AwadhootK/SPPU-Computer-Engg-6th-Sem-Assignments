@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('#name').bind('focus', function () {
+          $(this).css('background-color', 'green')
+        })
+
+        $('#name').bind('blur', function () {
+          $(this).css('background-color', 'white')
+        })
+
+        $('#myForm').submit(function (e) {
+          e.preventDefault() // Prevent form submission
+
+          // Fetching form values
+          var name = $('#name').val()
+          var email = $('#email').val()
+          var password = $('#password').val()
+
+          // Regular expressions for email validation
+          var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
+
+          // Validation
+          if (name == '') {
+            alert('Please enter your name')
+            return false
+          }
+          if (email == '') {
+            alert('Please enter your email')
+            return false
+          } else if (!emailRegex.test(email)) {
+            alert('Please enter a valid email')
+            return false
+          }
+          if (password == '') {
+            alert('Please enter your password')
+            return false
+          } else if (password.length < 6) {
+            alert('Password must be at least 6 characters long')
+            return false
+          }
+
+          // If all validations pass, you can proceed with form submission
+          // Here you can add AJAX call to submit form data
+
+          // Example: $('#myForm').submit();
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <form id="myForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" /><br /><br />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" /><br /><br />
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" /><br /><br />
+
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>

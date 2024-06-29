@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="school">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:element name="city" type="string" />
+        <xs:complextype>
+            <xs:sequence>
+                <xs:element name="students">
+                    <xs:complextype>
+                        <xs:sequence>
+                            <xs:element name="student" maxOccuers="unbounded">
+                                <xs:complextype>
+                                <xs:attribute name="id" type="xs:int" use="required"/>
+                                    <xs:sequence>
+                                        <xs:element name="name" type="xs:string"/>
+                                        <xs:element name="class" type="xs:string"/>
+                                        <xs:element name="rollno" type="xs:int"/>
+                                    </xs:sequence>
+                                </xs:complextype>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complextype>
+                </xs:element>
+            <xs:sequence>
+        <xs:complextype>
+    </xs:element>
+</xs:schema>

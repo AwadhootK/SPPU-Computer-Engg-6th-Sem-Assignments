@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1 class="second">jQuery</h1>
+    <p id="first_p">Paragraph 1 - Lorem ipsum dolor sit amet.</p>
+    <p class="second">Paragraph 2 - Lorem ipsum dolor sit amet.</p>
+    <p id="third">Paragraph 3 - Lorem ipsum dolor sit amet.</p>
+    <button id="hide_btn">Click to hide</button><br />
+    <button id="text_btn">Click to change text</button><br />
+    <button id="html_btn">Click to change HTML (bold)</button><br />
+    <button id="toggle_class_btn">Toggle class</button><br />
+    <button id="css_btn">Change CSS</button><br />
+    <button id="nav">Navigate to form</button>
+    <br />
+    <h3>Press H key to hide and S key to show!</h3>
+  </body>
+  <style>
+    .box {
+      color: red;
+      background-color: aqua;
+    }
+  </style>
+  <script>
+    $(document).ready(function () {
+      // Function to hide all paragraphs
+      function hideAllParagraphs() {
+        $('p').hide()
+      }
+
+      // Initially hiding all paragraphs except the first one
+      //   hideAllParagraphs()
+      $('#first_p').show()
+
+      // Click event for hiding the first paragraph
+      $('#hide_btn').click(function () {
+        $('#first_p').hide()
+      })
+
+      // Click event for changing text of the first paragraph
+      $('#text_btn').click(function () {
+        const newText = prompt('Enter new text:')
+        if (newText !== null) {
+          // Check if user cancels prompt
+          $('#first_p').text(newText)
+        }
+      })
+
+      // Click event for changing HTML (making text bold) of the first paragraph
+      $('#html_btn').click(function () {
+        $('#first_p').html('<b>' + $('#first_p').html() + '</b>')
+      })
+
+      // Key press event for hiding and showing the first paragraph using 'H' and 'S' keys respectively
+      $(document).keypress(function (event) {
+        if (event.which === 72 || event.which === 104) {
+          // 'H' or 'h'
+          $('#first_p').hide(500)
+        } else if (event.which === 83 || event.which === 115) {
+          // 'S' or 's'
+          $('#first_p').show(500)
+        }
+      })
+
+      $('#toggle_class_btn').click(function () {
+        $('p.second').toggleClass('box')
+      })
+    })
+
+    $('#css_btn').click(function () {
+      const inputCol = prompt('Enter a color: ')
+
+      const inputBackCol = prompt('Enter a background color: ')
+      $('#css_btn').css({
+        'color': inputCol,
+        'background-color': inputBackCol
+      })
+    })
+
+    $('#nav').click(function() {
+        window.location.href = './form-jquery.html';
+    })
+  </script>
+</html>

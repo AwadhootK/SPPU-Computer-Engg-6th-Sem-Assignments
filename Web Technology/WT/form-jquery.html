@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body style="background-color: #212121">
+    <center>
+      <h1 style="color: aliceblue">This is form</h1>
+      <div>
+        <form id='reg-form' action="./homepage.html">
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Username"
+          /><br /><br />
+          <input
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+          /><br /><br />
+          <div style="background-color: purple;">
+            <h3 style="color: aliceblue">Gender</h3>
+            <input type="radio" name="gender" id="male" value="male"/>
+            <label for="male" style="color: aliceblue">Male</label>
+            <input type="radio" name="gender" id="female" value="female" />
+            <label for="female" style="color: aliceblue">Female</label
+            ><br /><br />
+          </div>
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+    </center>
+  </body>
+  <script>
+    $(document).ready(function () {
+      $('input').focus(function () {
+        $(this).css('background-color', 'aqua')
+      })
+
+      $('input').blur(function () {
+        $(this).css('background-color', '')
+      })
+
+      $('input').change(function() {
+        console.log($(this).val())
+      })
+
+      $('#reg-form').submit(function(e) {
+        e.preventDefault()
+        console.log("Form Submitted!")
+      })
+    })
+
+  </script>
+</html>

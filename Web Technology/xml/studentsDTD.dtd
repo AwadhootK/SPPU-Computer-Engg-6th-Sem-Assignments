@@ -1,0 +1,9 @@
+<!ELEMENT school (city, students)>
+<!ELEMENT city (#PCDATA)>
+<!ELEMENT students (student+)>
+<!ELEMENT student (name, class, rollno)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT class (#PCDATA)>
+<!ELEMENT rollno (#PCDATA)>
+<!ATTLIST school name CDATA #REQUIRED>
+<!ATTLIST student id ID #REQUIRED>

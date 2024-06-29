@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AngularJS Form Validation</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+      input.ng-invalid {
+        background-color: lightcoral;
+      }
+      input.ng-valid {
+        background-color: aquamarine;
+      }
+      input.ng-pristine {
+        background-color: pink;
+      }
+      input.touched {
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+      <form name="myForm" novalidate>
+        <label>Name:</label>
+        <input
+          type="text"
+          name="name"
+          ng-model="user.name"
+          ng-required="true"
+          ng-minlength="3"
+        />
+        <div ng-show="myForm.name.$error.required && !myForm.name.$pristine">
+          Name is required.
+        </div>
+        <div ng-show="myForm.name.$error.minlength && !myForm.name.$pristine">
+          Name must be at least 3 characters.
+        </div>
+        <br />
+        <br />
+        <label>Email:</label>
+        <input
+          type="email"
+          name="email"
+          ng-model="user.email"
+          ng-required="true"
+        />
+        <div ng-show="myForm.email.$error.required && !myForm.email.$pristine">
+          Email is required.
+        </div>
+        <div ng-show="myForm.email.$error.email && !myForm.email.$pristine">
+          Invalid email address.
+        </div>
+        <br />
+        <button ng-disabled="myForm.$invalid">Submit</button>
+      </form>
+
+      <p>Touched = {{myForm.name.$touched}}</p>
+      <p>UnTouched = {{myForm.name.$untouched}}</p>
+      <p>Valid = {{myForm.name.$valid}}</p>
+      <p>Invalid = {{myForm.name.$invalid}}</p>
+      <p>Pristine = {{myForm.name.$pristine}}</p>
+      <p>Dirty = {{myForm.name.$dirty}}</p>
+    </div>
+
+    <script>
+      var app = angular.module('myApp', [])
+      app.controller('myCtrl', function ($scope) {
+        $scope.user = {}
+      })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ng-controller Example</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  </head>
+  <body>
+    <!-- <div ng-app="" ng-init="person={firstName:'John',lastName:'Doe'}">
+      Enter your name: <input type="text" ng-model="name">
+      Enter color: <input type="text" ng-model="color">
+      <h2 style="background-color: {{color}};">{{person.firstName}}</h2>
+    </div> -->
+
+    <br><br>
+
+    <div ng-app="myapp", ng-controller="myctrl">
+      <h3>Countries: </h3><br>
+      <ul>
+        <li ng-repeat="c in countries">
+          {{ c }}
+        </li>
+      </ul>
+      <p>Add another country: <input type="text" ng-model="country"></p>
+      <p>{{country}}</p>
+    </div>
+
+    <script>
+      var app = angular.module('myapp', []);
+      app.controller('myctrl', function($scope) {
+        $scope.countries = ['UK', 'India', 'USA', 'France', 'Japan'];
+      });
+    </script>
+</html>

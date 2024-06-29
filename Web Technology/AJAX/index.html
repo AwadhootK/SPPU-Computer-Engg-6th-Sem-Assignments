@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CAT FACTS</title>
+  </head>
+  <body>
+    <center>
+      <h1>Cat Fact</h1>
+      <div id="fact-div"></div>
+      <br />
+      <button id="new-fact-btn">Click for new fact!</button>
+    </center>
+  </body>
+  <script>
+    const factBtn = document.getElementById('new-fact-btn')
+    const factDiv = document.getElementById('fact-div')
+
+    async function getFact() {
+      const URL = 'https://cat-fact.herokuapp.com/facts'
+      //   factsjson = await fetch(URL).then(response => response.json())
+      const xhr = new XMLHttpRequest()
+
+      xhr.open('GET', URL, true)
+
+      xhr.onloadstart = function () {
+        factDiv.innerHTML = '<h2>Loading...</h2>'
+      }
+
+      xhr.onreadystatechange = function() {
+        console.log(this.readyState)
+      }
+
+      facts = []
+      xhr.onload = function () {
+        if (this.status === 200) {
+          factsjson = JSON.parse(this.responseText)
+          facts = []
+          factsjson.forEach(fact => {
+            facts.push(fact.text)
+          })
+          fact = facts[Math.floor(Math.random() * facts.length)]
+          factDiv.innerHTML = '<h2>' + fact + '</h2>'
+        } else {
+            fact.innerHTML = '<h2>Some error occurred...</h2>'
+        }
+      }
+
+      xhr.send()
+    }
+
+    factBtn.addEventListener('click', () => {
+      getFact().then()
+    })
+  </script>
+</html>
