@@ -1,0 +1,1 @@
+print(int('w'.encode().hex(), 16))
